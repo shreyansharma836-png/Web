@@ -3,254 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Property Registration System</title>
+<title>Simple Daily Entry</title>
 
 <style>
-:root {
-    --primary: #1e293b;
-    --secondary: #2563eb;
-    --bg: #f1f5f9;
-    --card: #ffffff;
-}
-
-* {
-    box-sizing: border-box;
-    font-family: "Segoe UI", sans-serif;
-}
-
 body {
-    margin: 0;
-    background: var(--bg);
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
     padding: 20px;
 }
-
-/* ---------- HEADER ---------- */
-h1 {
-    text-align: center;
-    color: var(--primary);
-    margin-bottom: 20px;
-}
-
-/* ---------- FORM CARD ---------- */
-.form-card {
-    background: var(--card);
+form {
+    background: #ffffff;
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    max-width: 1300px;
+    border-radius: 10px;
+    max-width: 420px;
     margin: auto;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
-
-/* ---------- GRID ---------- */
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-}
-
-.form-grid input {
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #cbd5e1;
-    font-size: 14px;
-}
-
-.form-grid input:focus {
-    outline: none;
-    border-color: var(--secondary);
-}
-
-/* ---------- BUTTONS ---------- */
-.actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-.submit-btn {
-    background: var(--secondary);
-    color: #fff;
-}
-
-.download-btn {
-    background: #16a34a;
-    color: #fff;
-}
-
-button:hover {
-    opacity: 0.9;
-}
-
-/* ---------- TABLE ---------- */
-.table-container {
-    margin-top: 30px;
-    overflow-x: auto;
-    background: var(--card);
-    padding: 10px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 1600px;
-}
-
-th, td {
-    border: 1px solid #e2e8f0;
-    padding: 8px;
+h2 {
     text-align: center;
-    font-size: 13px;
+    margin-bottom: 10px;
 }
-
-th {
-    background: var(--primary);
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background: #2563eb;
     color: #fff;
-    position: sticky;
-    top: 0;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
 }
-
-/* ---------- MOBILE ---------- */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 20px;
-    }
-
-    button {
-        width: 100%;
-    }
+.status {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Property Registration Entry System</h1>
-
-<div class="form-card">
 <form id="dataForm">
+<h2>Daily Entry Form</h2>
 
-<div class="form-grid">
-<input placeholder="State" id="state" required>
-<input placeholder="District" id="district">
-<input placeholder="Document" id="document">
-<input placeholder="Document Number" id="docNumber">
-<input placeholder="Docs Presentation" id="docsPresentation">
-<input placeholder="Executer Name" id="executerName">
-<input placeholder="Favor Of Name" id="favorName">
-<input placeholder="SRO Name" id="sroName">
-<input placeholder="Client Name / Source" id="clientName">
-<input placeholder="Drafted & Executed" id="draftedExecuted">
-<input placeholder="Property Address" id="propertyAddress">
-<input placeholder="Consideration Price" id="considerationPrice">
-<input placeholder="SI / CSI" id="siCsi">
-<input placeholder="Registration" id="registration">
-<input placeholder="Stamp Duty" id="stampDuty">
-<input placeholder="Society Duty" id="societyDuty">
-<input placeholder="Total" id="total">
-<input placeholder="Commission Of" id="commission">
-<input placeholder="Remaining Amount" id="remaining">
-<input placeholder="SRO Expenses" id="sroExpenses">
-<input placeholder="Final Amount" id="finalAmount">
-<input placeholder="Amount Submission" id="amountSubmission">
-<input placeholder="SFDC" id="sfdc">
-</div>
+<input placeholder="Field 1" id="field1" required>
+<input placeholder="Field 2" id="field2">
+<input placeholder="Field 3" id="field3">
+<input placeholder="Field 4" id="field4">
+<input placeholder="Field 5" id="field5">
 
-<div class="actions">
-<button type="submit" class="submit-btn">Add Entry</button>
-<button type="button" class="download-btn" onclick="downloadExcel()">Download Excel</button>
-</div>
-
+<button type="submit">Save Data</button>
+<div class="status" id="status"></div>
 </form>
-</div>
-
-<div class="table-container">
-<table id="dataTable">
-<thead>
-<tr>
-<th>#</th>
-<th>State</th>
-<th>District</th>
-<th>Document</th>
-<th>Doc No</th>
-<th>Docs</th>
-<th>Executer</th>
-<th>Favor Of</th>
-<th>SRO</th>
-<th>Client</th>
-<th>Drafted</th>
-<th>Property</th>
-<th>Consideration</th>
-<th>SI/CSI</th>
-<th>Registration</th>
-<th>Stamp</th>
-<th>Society</th>
-<th>Total</th>
-<th>Commission</th>
-<th>Remaining</th>
-<th>SRO Exp</th>
-<th>Final</th>
-<th>Submission</th>
-<th>SFDC</th>
-</tr>
-</thead>
-<tbody></tbody>
-</table>
-</div>
 
 <script>
-let count = 0;
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxKbWhSS5ib7qMAs1bgUe2eLfonuozq1UUEl9j11ncuphq21pJTs3kz-UuXAfv2pVWVtQ/exec";
 
 document.getElementById("dataForm").addEventListener("submit", function(e) {
     e.preventDefault();
-    count++;
 
-    const fields = [
-        "state","district","document","docNumber","docsPresentation",
-        "executerName","favorName","sroName","clientName","draftedExecuted",
-        "propertyAddress","considerationPrice","siCsi","registration",
-        "stampDuty","societyDuty","total","commission","remaining",
-        "sroExpenses","finalAmount","amountSubmission","sfdc"
-    ];
+    const status = document.getElementById("status");
+    status.innerText = "Saving data...";
 
-    let row = `<tr><td>${count}</td>`;
-    fields.forEach(id => {
-        row += `<td>${document.getElementById(id).value}</td>`;
-        document.getElementById(id).value = "";
+    const formData = new FormData();
+    formData.append("field1", field1.value);
+    formData.append("field2", field2.value);
+    formData.append("field3", field3.value);
+    formData.append("field4", field4.value);
+    formData.append("field5", field5.value);
+
+    fetch(SCRIPT_URL, {
+        method: "POST",
+        body: formData
+    })
+    .then(() => {
+        status.innerText = "✅ Data saved successfully";
+        document.getElementById("dataForm").reset();
+    })
+    .catch(() => {
+        status.innerText = "❌ Error saving data";
     });
-    row += "</tr>";
-
-    document.querySelector("#dataTable tbody").insertAdjacentHTML("beforeend", row);
 });
-
-function downloadExcel() {
-    let csv = [];
-    document.querySelectorAll("table tr").forEach(row => {
-        let data = [];
-        row.querySelectorAll("th, td").forEach(cell => {
-            data.push(`"${cell.innerText}"`);
-        });
-        csv.push(data.join(","));
-    });
-
-    const blob = new Blob([csv.join("\n")], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "property_data.csv";
-    a.click();
-}
 </script>
 
 </body>
